@@ -18,7 +18,9 @@ function ProblemPage() {
 
   const [currentProblemId, setCurrentProblemId] = useState("two-sum");
   const [selectedLanguage, setSelectedLanguage] = useState("javascript");
-  const [code, setCode] = useState(PROBLEMS[currentProblemId].starterCode.javascript);
+  const [code, setCode] = useState(
+    PROBLEMS[currentProblemId].starterCode.javascript,
+  );
   const [output, setOutput] = useState(null);
   const [isRunning, setIsRunning] = useState(false);
 
@@ -40,7 +42,8 @@ function ProblemPage() {
     setOutput(null);
   };
 
-  const handleProblemChange = (newProblemId) => navigate(`/problem/${newProblemId}`);
+  const handleProblemChange = (newProblemId) =>
+    navigate(`/problem/${newProblemId}`);
 
   const triggerConfetti = () => {
     confetti({
@@ -57,20 +60,22 @@ function ProblemPage() {
   };
 
   const normalizeOutput = (output) => {
-    // normalize output for comparison (trim whitespace, handle different spacing)
-    return output
-      .trim()
+    if (output === null || output === undefined) return "";
+
+    return String(output)
+      .replace(/\r\n/g, "\n")
+      .replace(/\r/g, "\n")
       .split("\n")
+      .map((line) => line.trim())
+      .filter((line) => line.length > 0)
       .map((line) =>
         line
-          .trim()
-          // remove spaces after [ and before ]
-          .replace(/\[\s+/g, "[")
-          .replace(/\s+\]/g, "]")
-          // normalize spaces around commas to single space after comma
+          .replace(/\[\s*/g, "[")
+          .replace(/\s*\]/g, "]")
           .replace(/\s*,\s*/g, ",")
+          .replace(/\s+/g, " ")
+          .trim(),
       )
-      .filter((line) => line.length > 0)
       .join("\n");
   };
 
@@ -78,7 +83,13 @@ function ProblemPage() {
     const normalizedActual = normalizeOutput(actualOutput);
     const normalizedExpected = normalizeOutput(expectedOutput);
 
-    return normalizedActual == normalizedExpected;
+    console.log("========== TEST ==========");
+    console.log("Actual:", JSON.stringify(normalizedActual));
+    console.log("Expected:", JSON.stringify(normalizedExpected));
+    console.log("Match:", normalizedActual === normalizedExpected);
+    console.log("==========================");
+
+    return normalizedActual === normalizedExpected;
   };
 
   const handleRunCode = async () => {

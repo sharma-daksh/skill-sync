@@ -64,12 +64,38 @@ class Solution {
         System.out.println(Arrays.toString(twoSum(new int[]{3, 2, 4}, 6))); // Expected: [1, 2]
         System.out.println(Arrays.toString(twoSum(new int[]{3, 3}, 6))); // Expected: [0, 1]
     }
+}`,cpp: `#include <iostream>
+#include <vector>
+#include <unordered_map>
+
+using namespace std;
+
+vector<int> twoSum(vector<int>& nums, int target) {
+    // Write your solution here
+
+    return {};
+}
+
+int main() {
+    vector<int> a = {2, 7, 11, 15};
+    vector<int> b = {3, 2, 4};
+    vector<int> c = {3, 3};
+
+    for (int x : twoSum(a, 9)) cout << x << " ";
+    cout << endl;
+
+    for (int x : twoSum(b, 6)) cout << x << " ";
+    cout << endl;
+
+    for (int x : twoSum(c, 6)) cout << x << " ";
+    cout << endl;
 }`,
     },
     expectedOutput: {
       javascript: "[0,1]\n[1,2]\n[0,1]",
       python: "[0, 1]\n[1, 2]\n[0, 1]",
       java: "[0, 1]\n[1, 2]\n[0, 1]",
+      cpp: "0 1 \n1 2 \n0 1 ",
     },
   },
 
@@ -136,12 +162,35 @@ class Solution {
         reverseString(test2);
         System.out.println(Arrays.toString(test2)); // Expected: [h, a, n, n, a, H]
     }
+}`,cpp: `#include <iostream>
+#include <vector>
+
+using namespace std;
+
+void reverseString(vector<char>& s) {
+    // Write your solution here
+
+}
+
+int main() {
+    vector<char> test1 = {'h','e','l','l','o'};
+    reverseString(test1);
+
+    for (char c : test1) cout << c << " ";
+    cout << endl;
+
+    vector<char> test2 = {'H','a','n','n','a','h'};
+    reverseString(test2);
+
+    for (char c : test2) cout << c << " ";
+    cout << endl;
 }`,
     },
     expectedOutput: {
       javascript: '["o","l","l","e","h"]\n["h","a","n","n","a","H"]',
       python: "['o', 'l', 'l', 'e', 'h']\n['h', 'a', 'n', 'n', 'a', 'H']",
       java: "[o, l, l, e, h]\n[h, a, n, n, a, H]",
+      cpp: "o l l e h \nh a n n a H ",
     },
   },
 
@@ -203,12 +252,31 @@ print(isPalindrome(" "))  # Expected: True`,
         System.out.println(isPalindrome("race a car")); // Expected: false
         System.out.println(isPalindrome(" ")); // Expected: true
     }
+}`,cpp: `#include <iostream>
+#include <string>
+#include <cctype>
+
+using namespace std;
+
+bool isPalindrome(string s) {
+    // Write your solution here
+
+    return false;
+}
+
+int main() {
+    cout << boolalpha;
+
+    cout << isPalindrome("A man, a plan, a canal: Panama") << endl;
+    cout << isPalindrome("race a car") << endl;
+    cout << isPalindrome(" ") << endl;
 }`,
     },
     expectedOutput: {
       javascript: "true\nfalse\ntrue",
       python: "True\nFalse\nTrue",
       java: "true\nfalse\ntrue",
+      cpp: "true\nfalse\ntrue",
     },
   },
 
@@ -269,12 +337,32 @@ print(maxSubArray([5,4,-1,7,8]))  # Expected: 23`,
         System.out.println(maxSubArray(new int[]{1})); // Expected: 1
         System.out.println(maxSubArray(new int[]{5,4,-1,7,8})); // Expected: 23
     }
+}`,cpp: `#include <iostream>
+#include <vector>
+
+using namespace std;
+
+int maxSubArray(vector<int>& nums) {
+    // Write your solution here
+
+    return 0;
+}
+
+int main() {
+    vector<int> a = {-2,1,-3,4,-1,2,1,-5,4};
+    vector<int> b = {1};
+    vector<int> c = {5,4,-1,7,8};
+
+    cout << maxSubArray(a) << endl;
+    cout << maxSubArray(b) << endl;
+    cout << maxSubArray(c) << endl;
 }`,
     },
     expectedOutput: {
       javascript: "6\n1\n23",
       python: "6\n1\n23",
       java: "6\n1\n23",
+      cpp: "6\n1\n23",
     },
   },
 
@@ -331,12 +419,30 @@ print(maxArea([1,1]))  # Expected: 1`,
         System.out.println(maxArea(new int[]{1,8,6,2,5,4,8,3,7})); // Expected: 49
         System.out.println(maxArea(new int[]{1,1})); // Expected: 1
     }
+}`,cpp: `#include <iostream>
+#include <vector>
+
+using namespace std;
+
+int maxArea(vector<int>& height) {
+    // Write your solution here
+
+    return 0;
+}
+
+int main() {
+    vector<int> a = {1,8,6,2,5,4,8,3,7};
+    vector<int> b = {1,1};
+
+    cout << maxArea(a) << endl;
+    cout << maxArea(b) << endl;
 }`,
     },
     expectedOutput: {
       javascript: "49\n1",
       python: "49\n1",
       java: "49\n1",
+      cpp: "49\n1",
     },
   },
 };
@@ -356,5 +462,10 @@ export const LANGUAGE_CONFIG = {
     name: "Java",
     icon: "/java.png",
     monacoLang: "java",
+  },
+  cpp: {
+    name: "C++",
+    icon: "/java.png",
+    monacoLang: "cpp",
   },
 };
